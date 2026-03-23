@@ -1,1 +1,973 @@
-Doict
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="RealWorld – Hub für digitale Souveränität und finanzielle Emanzipation. Dein Rüstzeug für den Krypto-Space.">
+<title>RealWorld | Krypto & Digitale Unabhängigkeit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #050505;
+  --bg2:     #080808;
+  --card:    #0a0a0a;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  
+  /* DEFAULT THEME: GOLD */
+  --primary:     #fbbf24; 
+  --primary2:    #f59e0b;
+  --primary-rgb: 251, 191, 36;
+  
+  --text:    #e0e3ef;
+  --muted:   #6b7280;
+  --fd: 'Syne', system-ui, sans-serif;
+  --fb: 'DM Sans', system-ui, sans-serif;
+  --radius: 1.5rem;
+
+  --glass-bg:        rgba(255,255,255,0.03);
+  --glass-bg-h:      rgba(255,255,255,0.05);
+  --glass-border:    rgba(255,255,255,0.1);
+  --glass-border-t:  rgba(255,255,255,0.18);
+  --glass-blur:      blur(24px) saturate(150%);
+}
+
+/* THEME: GREEN */
+html.theme-green {
+  --primary:     #00e676; 
+  --primary2:    #00c853;
+  --primary-rgb: 0, 230, 118;
+}
+
+/* THEME: PURPLE */
+html.theme-purple {
+  --primary:     #a78bfa; 
+  --primary2:    #8b5cf6;
+  --primary-rgb: 167, 139, 250;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease;
+}
+
+h1,h2,h3,h4,h5 { font-family: var(--fd); }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; border-radius: inherit; }
+
+/* ══════════════════════════════════════
+   UTILITIES & IMAGE PLACEHOLDERS
+══════════════════════════════════════ */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--fd);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--primary-rgb), 0.22);
+  border-top-color: rgba(var(--primary-rgb), 0.38);
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 1px 0 0 rgba(var(--primary-rgb), 0.1) inset;
+  transition: color 0.5s, background 0.5s, border-color 0.5s, box-shadow 0.5s;
+}
+.section-eyebrow .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  transition: background 0.5s, box-shadow 0.5s;
+}
+
+.section-title {
+  font-family: var(--fd);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  scale: 1 1.1;
+  transform-origin: center left;
+}
+.section-title em { 
+  font-style: normal; 
+  color: var(--primary); 
+  text-shadow: 0 0 24px rgba(var(--primary-rgb), 0.3); 
+  transition: color 0.5s, text-shadow 0.5s;
+}
+
+.section-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.content-img {
+  width: 100%;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  object-fit: cover;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+.content-img:hover {
+  box-shadow: 0 15px 40px rgba(var(--primary-rgb), 0.2);
+}
+.portrait-img { aspect-ratio: 4/5; }
+.landscape-img { aspect-ratio: 21/9; margin-bottom: 4rem; }
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+[data-reveal] {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity 0.8s cubic-bezier(.16,1,.3,1), translate 0.8s cubic-bezier(.16,1,.3,1);
+}
+.js-ready [data-reveal] {
+  opacity: 0;
+  translate: 0 30px;
+}
+.js-ready [data-reveal].visible {
+  opacity: 1;
+  translate: 0 0;
+}
+[data-reveal][data-delay="1"] { transition-delay: 0.1s; }
+[data-reveal][data-delay="2"] { transition-delay: 0.2s; }
+[data-reveal][data-delay="3"] { transition-delay: 0.3s; }
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  width: 800px; height: 800px;
+  top: -200px; right: -200px;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.12) 0%, transparent 60%);
+  animation: drift1 15s ease-in-out infinite alternate;
+  border-radius: 50%;
+  transition: background 0.5s;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  bottom: -150px; left: -100px;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.06) 0%, transparent 65%);
+  animation: drift2 18s ease-in-out infinite alternate;
+  border-radius: 50%;
+  transition: background 0.5s;
+}
+@keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(40px,-40px) scale(1.1); } }
+@keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-30px,40px) scale(1.05); } }
+
+.hero-bg .noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-h1 {
+  font-family: var(--fd);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.2s cubic-bezier(.16,1,.3,1) forwards;
+  scale: 1 1.1;
+  transform-origin: center bottom;
+}
+.hero-h1 span {
+  color: var(--primary);
+  text-shadow: 0 0 30px rgba(var(--primary-rgb), 0.3);
+  transition: color 0.5s, text-shadow 0.5s;
+}
+
+.hero-sub {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.4s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+.hero-scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--primary);
+  text-decoration: none;
+  opacity: 0;
+  margin-top: 3rem;
+  animation: fadeUp 0.9s 0.6s forwards, bounce 2s infinite ease-in-out 1.5s;
+  transition: background 0.3s, transform 0.3s, border-color 0.3s, color 0.5s;
+}
+.hero-scroll-btn:hover {
+  background: rgba(var(--primary-rgb), 0.1);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
+}
+.hero-scroll-btn svg {
+  width: 24px; height: 24px;
+  stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   STATS
+══════════════════════════════════════ */
+.stats {
+  padding: 0 0 6rem;
+  position: relative;
+  z-index: 1;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-t);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.8);
+}
+.stat-item {
+  background: rgba(10,10,10, 0.8);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+.stat-num {
+  font-family: var(--fd);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(var(--primary-rgb), 0.3);
+  scale: 1 1.1;
+  transition: color 0.5s, text-shadow 0.5s;
+}
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════════════════
+   VISION / INTRO (WITH IMAGE)
+══════════════════════════════════════ */
+.vision {
+  padding: 6rem 0;
+  background: var(--bg2);
+  position: relative;
+}
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.vision-text-block {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #c9cdd8;
+}
+.vision-text-block strong {
+  color: #fff;
+  font-weight: 600;
+}
+.vision-highlight {
+  font-family: var(--fd);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.4;
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--primary);
+  transition: color 0.5s, border-color 0.5s;
+}
+
+/* ══════════════════════════════════════
+   PILLARS (4 SÄULEN)
+══════════════════════════════════════ */
+.pillars {
+  padding: 6rem 0;
+  background: var(--bg);
+}
+.pillars-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+.pillars-hero-img {
+  width: 100%;
+  aspect-ratio: 21/9;
+  margin-bottom: 4rem;
+}
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.pillar-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-t);
+  border-radius: var(--radius);
+  padding: 3rem 2.5rem;
+  transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.3), transparent);
+  opacity: 0; transition: opacity 0.5s, background 0.5s;
+}
+.pillar-card:hover {
+  background: var(--glass-bg-h);
+  border-color: rgba(var(--primary-rgb), 0.2);
+  transform: translateY(-5px);
+}
+.pillar-card:hover::before { opacity: 1; }
+
+.pillar-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  filter: drop-shadow(0 0 15px rgba(var(--primary-rgb), 0.2));
+  transition: filter 0.5s;
+}
+.pillar-title {
+  font-family: var(--fd);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.pillar-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════
+   ETHOS / QUOTE
+══════════════════════════════════════ */
+.ethos {
+  padding: 6rem 0;
+  background: var(--bg2);
+}
+.ethos-box {
+  background: linear-gradient(145deg, rgba(10,10,10,0.9), rgba(5,5,5,0.9));
+  border: 1px solid var(--glass-border);
+  border-radius: 2rem;
+  padding: 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.ethos-box::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  transition: background 0.5s;
+}
+.ethos-text {
+  font-family: var(--fd);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.ethos-sub {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.5s;
+}
+
+/* ══════════════════════════════════════
+   PRICING (MONETARISIERUNG)
+══════════════════════════════════════ */
+.pricing {
+  padding: 8rem 0;
+  background: var(--bg);
+  position: relative;
+}
+.pricing::before {
+  content: '';
+  position: absolute;
+  width: 1000px; height: 500px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(var(--primary-rgb), 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  transition: background 0.5s;
+}
+
+.pricing-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.pricing-logo {
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(var(--primary-rgb), 0.2));
+  transition: filter 0.5s;
+}
+
+.pricing-card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(10,10,10,0.8);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(var(--primary-rgb), 0.3);
+  border-top: 2px solid var(--primary);
+  border-radius: 2rem;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(var(--primary-rgb), 0.1);
+  text-align: center;
+  position: relative;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+.pricing-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #000;
+  font-family: var(--fd);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.2rem;
+  border-radius: 99px;
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.4);
+  transition: background 0.5s, box-shadow 0.5s;
+}
+.pricing-title {
+  font-family: var(--fd);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.pricing-price {
+  font-family: var(--fd);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin: 1.5rem 0 0.5rem;
+  text-shadow: 0 0 25px rgba(var(--primary-rgb), 0.3);
+  transition: color 0.5s, text-shadow 0.5s;
+}
+.pricing-period {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+.pricing-features {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+.pricing-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: #c9cdd8;
+  margin-bottom: 1rem;
+}
+.pricing-feature svg {
+  width: 20px; height: 20px;
+  fill: none; stroke: var(--primary); stroke-width: 2;
+  flex-shrink: 0;
+  transition: stroke 0.5s;
+}
+.pricing-btn {
+  display: block;
+  width: 100%;
+  padding: 1.2rem;
+  font-family: var(--fd);
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--primary);
+  color: #000;
+  border-radius: 1rem;
+  transition: all 0.3s;
+}
+.pricing-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.3);
+}
+
+/* ══════════════════════════════════════
+   THEME SWITCHER & TELEGRAM FAB
+══════════════════════════════════════ */
+.theme-switcher {
+  position: fixed;
+  bottom: 2rem; left: 2rem;
+  z-index: 900;
+  display: flex;
+  gap: 0.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1rem;
+  border-radius: 99px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: background 0.3s, transform 0.4s ease, opacity 0.4s ease;
+}
+.theme-switcher.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.theme-switcher.visible:hover {
+  background: var(--glass-bg-h);
+  transform: translateY(-2px);
+}
+.color-dot {
+  width: 16px; height: 16px; 
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.2s;
+}
+.color-dot.gold { background: #fbbf24; }
+.color-dot.green { background: #00e676; }
+.color-dot.purple { background: #a78bfa; }
+.theme-switcher.visible:hover .color-dot { transform: scale(1.1); }
+
+.tg-fab {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  z-index: 900;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #2AABEE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(42, 171, 238, 0.4), 0 1px 0 0 rgba(255,255,255,0.2) inset;
+  
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: transform 0.4s ease, box-shadow 0.3s, opacity 0.4s ease;
+}
+.tg-fab.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.tg-fab.visible:hover {
+  transform: scale(1.1) translateY(-4px);
+  box-shadow: 0 12px 30px rgba(42, 171, 238, 0.5), 0 1px 0 0 rgba(255,255,255,0.3) inset;
+}
+.tg-fab svg { width: 30px; height: 30px; fill: #fff; margin-right: 2px; margin-top: 2px; }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  background: var(--bg2);
+  text-align: center;
+}
+.footer-logo {
+  font-family: var(--fd);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.footer-logo span { 
+  color: var(--primary); 
+  transition: color 0.5s;
+}
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE (MOBILE FIRST TWEAKS)
+══════════════════════════════════════ */
+@media (max-width: 960px) {
+  .vision-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .vision-grid .img-placeholder { aspect-ratio: 16/9; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .hero-h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+  .hero-sub { font-size: 1rem; }
+  .stats-grid { grid-template-columns: 1fr; gap: 1px; }
+  .stat-item { padding: 2rem 1.5rem; }
+  .ethos-box { padding: 2.5rem 1.5rem; }
+  .pricing-card { padding: 2.5rem 1.5rem; }
+  .tg-fab { bottom: 1rem; right: 1rem; width: 50px; height: 50px; }
+  .tg-fab svg { width: 24px; height: 24px; }
+  .theme-switcher { bottom: 1rem; left: 1rem; padding: 0.5rem 0.75rem; }
+  
+  .container { padding: 0 1.25rem; }
+  .section-title { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO (NO HEADER) ══ -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="noise"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-h1">
+      Du ahnst bereits, dass die<br>Spielregeln <span>manipuliert</span> sind.
+    </h1>
+    
+    <!-- ARROW CTA -->
+    <a href="#stats" class="hero-scroll-btn" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<section class="stats" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" data-reveal>
+        <div class="stat-num" data-count="6000">0</div>
+        <div class="stat-label">Menschen geholfen</div>
+      </div>
+      <div class="stat-item" data-reveal data-delay="1">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Dezentrale Kontrolle</div>
+      </div>
+      <div class="stat-item" data-reveal data-delay="2">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Echtzeit-Insights</div>
+      </div>
+      <div class="stat-item" data-reveal data-delay="3">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Mittelsmänner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VISION / INTRO ══ -->
+<section class="vision" id="vision">
+  <div class="container">
+    <div class="vision-grid">
+      <div class="vision-text-block" data-reveal>
+        <div class="section-eyebrow"><div class="dot"></div><span>Das Paradigma</span></div>
+        <h2 class="section-title">Willkommen in der<br><em>RealWorld</em>.</h2>
+        <p style="margin-bottom: 1.5rem;">
+          Diese Gemeinschaft ist weit mehr als nur ein Forum für oberflächliche Markttrends. Sie ist ein intellektueller Knotenpunkt für all jene, die den Paradigmenwechsel der Blockchain-Technologie nicht nur beobachten, sondern <strong>aktiv für sich nutzen wollen</strong>.
+        </p>
+        <p>
+          Wir haben diese Gruppe mit einer klaren Vision ins Leben gerufen: Fundiertes Wissen zu demokratisieren und Menschen das Rüstzeug an die Hand zu geben, um echte finanzielle Freiheit zu erlangen. 
+        </p>
+        <div class="vision-highlight">
+          Es geht um den bewussten Schritt heraus aus den Limitierungen und Abhängigkeiten des traditionellen, zentralisierten Fiat-Systems – hin zu vollkommener Eigenverantwortung.
+        </div>
+      </div>
+      
+      <!-- IMAGE: AUTO -->
+      <div data-reveal data-delay="1">
+        <img src="auto.webp" alt="Florian Lifestyle" class="content-img portrait-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PILLARS ══ -->
+<section class="pillars" id="pillars">
+  <div class="container">
+    <div class="pillars-header">
+      <div class="section-eyebrow" data-reveal><div class="dot"></div><span>Das Fundament</span></div>
+      <h2 class="section-title" data-reveal data-delay="1" style="text-align: center;">Unsere vier<br><em>essenziellen Säulen</em></h2>
+    </div>
+
+    <!-- HUGE FEATURED IMAGE: TELL -->
+    <div data-reveal data-delay="2">
+      <img src="tell.webp" alt="Florian Keynote Speaker" class="content-img landscape-img">
+    </div>
+
+    <div class="pillars-grid">
+      <!-- 1 -->
+      <div class="pillar-card" data-reveal>
+        <div class="pillar-icon">🧠</div>
+        <h3 class="pillar-title">Fundierter Wissenstransfer & Insights</h3>
+        <p class="pillar-desc">Wir filtern das ständige Rauschen des Marktes und konzentrieren uns auf das Wesentliche. Hier teilen wir tiefgehende, analytische Einblicke in makroökonomische Zusammenhänge, technologische Entwicklungen und Marktdynamiken. Erlerne die Fähigkeit, unabhängige und rationale Investitionsentscheidungen zu treffen.</p>
+      </div>
+      <!-- 2 -->
+      <div class="pillar-card" data-reveal data-delay="1">
+        <div class="pillar-icon">🛠️</div>
+        <h3 class="pillar-title">Praxisorientierte Architektur</h3>
+        <p class="pillar-desc">Theorie allein schafft noch keine Unabhängigkeit. Wir bieten konkrete Hilfestellungen und Ressourcen zu den wichtigsten Einrichtungstools: Von der absolut sicheren Verwahrung deiner Assets (Cold Wallets, Security-Protokolle) über die Navigation in DeFi-Ökosystemen bis zur Optimierung deiner digitalen Infrastruktur.</p>
+      </div>
+      <!-- 3 -->
+      <div class="pillar-card" data-reveal>
+        <div class="pillar-icon">🤝</div>
+        <h3 class="pillar-title">Authentische Empirie</h3>
+        <p class="pillar-desc">Graue Theorie weicht bei uns der echten Praxis. In dieser Gruppe teilen wir ungeschönt unsere eigenen Erfahrungswerte – die hochprofitablen Strategien ebenso wie die teuren Lektionen. Dieser transparente Austausch aus erster Hand schützt neue Mitglieder davor, vermeidbare Fehler zu begehen.</p>
+      </div>
+      <!-- 4 -->
+      <div class="pillar-card" data-reveal data-delay="1">
+        <div class="pillar-icon">🗝️</div>
+        <h3 class="pillar-title">Der Weg zur Unabhängigkeit</h3>
+        <p class="pillar-desc">Das ultimative Ziel all dieser Bemühungen ist deine persönliche und finanzielle Freiheit. Wir unterstützen uns gegenseitig dabei, Vermögenswerte so aufzubauen und abzusichern, dass ein selbstbestimmtes Leben abseits klassischer "Nine-to-Five"-Strukturen und inflationärer Systeme möglich wird.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ETHOS ══ -->
+<section class="ethos" id="ethos">
+  <div class="container">
+    <div class="ethos-box" data-reveal>
+      <div class="ethos-text">
+        "Wir agieren rational, faktenbasiert und gemeinschaftlich. Wer bereit ist, Verantwortung für seine eigene finanzielle Zukunft zu übernehmen, wird hier das perfekte Umfeld für sein Wachstum finden."
+      </div>
+      <div class="ethos-sub">Unser Ethos. Willkommen an Bord.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div style="text-align: center;">
+      <div class="section-eyebrow" data-reveal><div class="dot"></div><span>Dein Zugang</span></div>
+      <h2 class="section-title" data-reveal data-delay="1" style="text-align: center;">Der Weg in die RealWorld<br><em>beginnt hier.</em></h2>
+    </div>
+
+    <div class="pricing-layout">
+      <!-- PRICING CARD -->
+      <div class="pricing-card" data-reveal data-delay="2">
+        <div class="pricing-badge">Inner Circle</div>
+        
+        <img src="real_world.webp" alt="RealWorld Logo" class="pricing-logo">
+        
+        <div class="pricing-price">39,99€</div>
+        <div class="pricing-period">pro Monat. Jederzeit kündbar.</div>
+        
+        <div class="pricing-features">
+          <div class="pricing-feature">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            24/7 Zugang zur privaten Telegram-Gruppe
+          </div>
+          <div class="pricing-feature">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Echtzeit-Marktanalysen & Krypto-Insights
+          </div>
+          <div class="pricing-feature">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Schritt-für-Schritt Wallet & Security Setups
+          </div>
+          <div class="pricing-feature">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Direkter Austausch mit Experten & Community
+          </div>
+        </div>
+        
+        <a href="https://t.me/+oYgDNaiBRaVhNjIy" class="pricing-btn" target="_blank" rel="noopener">Jetzt beitreten</a>
+        <p style="font-size: 0.75rem; color: var(--muted); margin-top: 1rem;">Sichere Abwicklung. Instant Access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">Real<span>World</span></div>
+    <div class="footer-copy">© 2026 RealWorld. Alle Rechte vorbehalten. <br>Der Handel mit Kryptowährungen birgt Risiken. Keine Anlageberatung.</div>
+  </div>
+</footer>
+
+<!-- ══ THEME SWITCHER ══ -->
+<button id="themeToggle" class="theme-switcher" aria-label="Toggle Color Theme">
+  <span class="color-dot gold" title="Gold"></span>
+  <span class="color-dot green" title="Green"></span>
+  <span class="color-dot purple" title="Purple"></span>
+</button>
+
+<!-- ══ TELEGRAM STICKY FAB ══ -->
+<a href="https://t.me/+oYgDNaiBRaVhNjIy" target="_blank" rel="noopener" class="tg-fab" title="Tritt der Telegram-Gruppe bei">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.686c.223-.195-.054-.282-.346-.09l-6.4 4.024-2.76-.86c-.6-.185-.615-.6.125-.89l10.736-4.136c.5-.18.943.11.725.993z"/>
+  </svg>
+</a>
+
+<script>
+// ── THEME SWITCHER LOGIC ──
+const themes = ['', 'theme-green', 'theme-purple']; // empty is default (gold)
+let currentThemeIndex = 0;
+const themeToggle = document.getElementById('themeToggle');
+
+themeToggle.addEventListener('click', () => {
+  currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+  document.documentElement.className = themes[currentThemeIndex];
+});
+
+// ── STICKY ELEMENTS VISIBILITY ──
+const stickyElements = document.querySelectorAll('.theme-switcher, .tg-fab');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight * 0.3) {
+    stickyElements.forEach(el => el.classList.add('visible'));
+  } else {
+    stickyElements.forEach(el => el.classList.remove('visible'));
+  }
+}, { passive: true });
+
+// ── SCROLL REVEAL ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.body.classList.add('js-ready');
+document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+// ── COUNT UP STATS ──
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'));
+      let current = 0;
+      const increment = target / 30;
+      const timer = setInterval(() => {
+        current = Math.min(current + increment, target);
+        el.textContent = Math.floor(current) + '+';
+        if (current >= target) clearInterval(timer);
+      }, 40);
+    });
+    countObserver.disconnect();
+  });
+}, { threshold: 0.5 });
+const statsSection = document.querySelector('.stats');
+if (statsSection) countObserver.observe(statsSection);
+</script>
+</body>
+</html>
