@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="RealWorld – Hub für digitale Souveränität und finanzielle Emanzipation. Dein Rüstzeug für den Krypto-Space.">
 <title>RealWorld | Krypto & Digitale Unabhängigkeit</title>
+<link rel="icon" type="image/webp" href="real_world.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&family=Lora:wght@400&family=Outfit:wght@300;400;500&family=Playfair+Display:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=DM+Sans:wght@300;400&family=Inter:wght@300;400&family=JetBrains+Mono:wght@300;400&family=Lora:wght@400&family=Montserrat:wght@300;400&family=Outfit:wght@300;400;500&family=Playfair+Display:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════
    RESET & BASE
@@ -66,6 +67,18 @@ html.font-serif {
 html.font-dev {
   --fd: 'JetBrains Mono', monospace;
   --fb: 'DM Sans', sans-serif;
+}
+
+/* FONT: CYBERPUNK */
+html.font-cyber {
+  --fd: 'Space Grotesk', sans-serif;
+  --fb: 'Inter', sans-serif;
+}
+
+/* FONT: EDITORIAL */
+html.font-edit {
+  --fd: 'Cormorant Garamond', serif;
+  --fb: 'Montserrat', sans-serif;
 }
 
 html { font-size: 16px; scroll-behavior: smooth; }
@@ -1036,6 +1049,8 @@ img { display: block; max-width: 100%; border-radius: inherit; }
       <button class="font-option active" data-font="font-default" style="font-family: 'Outfit', sans-serif;">Modern Tech</button>
       <button class="font-option" data-font="font-serif" style="font-family: 'Playfair Display', serif;">Classic Wealth</button>
       <button class="font-option" data-font="font-dev" style="font-family: 'JetBrains Mono', monospace;">Developer</button>
+      <button class="font-option" data-font="font-cyber" style="font-family: 'Space Grotesk', sans-serif;">Cyberpunk</button>
+      <button class="font-option" data-font="font-edit" style="font-family: 'Cormorant Garamond', serif;">Editorial</button>
     </div>
   </div>
 </div>
@@ -1089,7 +1104,7 @@ fontOptions.forEach(btn => {
     const fontClass = btn.getAttribute('data-font');
     
     // Vorherige Schrift-Klassen bereinigen
-    document.documentElement.classList.remove('font-serif', 'font-dev');
+    document.documentElement.classList.remove('font-serif', 'font-dev', 'font-cyber', 'font-edit');
     
     // Neue Schrift-Klasse hinzufügen, falls nicht Standard
     if (fontClass !== 'font-default') {
