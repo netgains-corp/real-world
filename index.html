@@ -797,40 +797,6 @@ img { display: block; max-width: 100%; border-radius: inherit; }
 .tg-fab svg { width: 30px; height: 30px; fill: #fff; margin-right: 2px; margin-top: 2px; }
 
 /* ══════════════════════════════════════
-   SPORIAN EASTER EGG
-══════════════════════════════════════ */
-.sporian-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  perspective: 1000px;
-}
-.sporian-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-  cursor: pointer;
-}
-.sporian-img {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  filter: drop-shadow(0 0 50px rgba(var(--primary-rgb), 0.5));
-  animation: floatThroughSpace 15s linear infinite;
-}
-@keyframes floatThroughSpace {
-  0% { transform: scale(0.1) rotate3d(1, 1, 0, 0deg); }
-  50% { transform: scale(1.5) rotate3d(1, 1, 0, 180deg); }
-  100% { transform: scale(0.1) rotate3d(1, 1, 0, 360deg); }
-}
-
-/* ══════════════════════════════════════
    FOOTER
 ══════════════════════════════════════ */
 .footer {
@@ -1085,11 +1051,6 @@ img { display: block; max-width: 100%; border-radius: inherit; }
   </div>
 </div>
 
-<!-- ══ SPORIAN OVERLAY ══ -->
-<div id="sporianOverlay" class="sporian-overlay" title="Klicken zum Schließen">
-  <img src="sporian.webp" alt="Sporian" class="sporian-img">
-</div>
-
 <!-- ══ TELEGRAM STICKY FAB ══ -->
 <a href="https://t.me/+oYgDNaiBRaVhNjIy" target="_blank" rel="noopener" class="tg-fab" title="Tritt der Telegram-Gruppe bei">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1194,20 +1155,6 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 const statsSection = document.querySelector('.stats');
 if (statsSection) countObserver.observe(statsSection);
-
-// ── SPORIAN EASTER EGG LOGIC ──
-const buyBtn = document.querySelector('.pricing-btn');
-const sporianOverlay = document.getElementById('sporianOverlay');
-
-buyBtn.addEventListener('click', () => {
-  // Das preventDefault() wurde entfernt, damit sich der Copecart-Link im neuen Tab öffnet.
-  // Das Overlay erscheint gleichzeitig im aktuellen Tab.
-  sporianOverlay.classList.add('active');
-});
-
-sporianOverlay.addEventListener('click', () => {
-  sporianOverlay.classList.remove('active');
-});
 </script>
 </body>
 </html>
