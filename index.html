@@ -1018,7 +1018,7 @@ img { display: block; max-width: 100%; border-radius: inherit; }
           </div>
         </div>
         
-        <a href="https://t.me/+oYgDNaiBRaVhNjIy" class="pricing-btn" target="_blank" rel="noopener">Jetzt beitreten</a>
+        <a href="https://copecart.com/products/40f3da8f/checkout" class="pricing-btn" target="_blank" rel="noopener">Jetzt beitreten</a>
         <p style="font-size: 0.75rem; color: var(--muted); margin-top: 1rem;">Sichere Abwicklung. Instant Access.</p>
       </div>
     </div>
@@ -1169,8 +1169,9 @@ if (statsSection) countObserver.observe(statsSection);
 const buyBtn = document.querySelector('.pricing-btn');
 const sporianOverlay = document.getElementById('sporianOverlay');
 
-buyBtn.addEventListener('click', (e) => {
-  e.preventDefault(); // Verhindert die normale Weiterleitung zu Telegram
+buyBtn.addEventListener('click', () => {
+  // Das preventDefault() wurde entfernt, damit sich der Copecart-Link im neuen Tab öffnet.
+  // Das Overlay erscheint gleichzeitig im aktuellen Tab.
   sporianOverlay.classList.add('active');
 });
 
