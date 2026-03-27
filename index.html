@@ -252,6 +252,16 @@ img { display: block; max-width: 100%; border-radius: inherit; }
   text-align: center;
 }
 
+.hero-logo {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 15px rgba(var(--primary-rgb), 0.2));
+  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) forwards;
+  transition: filter 0.5s;
+}
+
 .hero-h1 {
   font-family: var(--fd);
   font-size: clamp(2.5rem, 6vw, 5rem);
@@ -595,6 +605,21 @@ img { display: block; max-width: 100%; border-radius: inherit; }
   color: var(--muted);
   margin-bottom: 2rem;
 }
+
+/* ══════════════════════════════════════
+   SPEZIAL-STYLING FÜR "DEIN ZUGANG" BADGE
+══════════════════════════════════════ */
+.section-eyebrow.eyebrow-pricing {
+  color: #ffffff;
+  border-color: rgba(251, 191, 36, 0.4);
+  border-top-color: rgba(251, 191, 36, 0.6);
+  background: rgba(251, 191, 36, 0.08);
+}
+.section-eyebrow.eyebrow-pricing .dot {
+  background: #00e676;
+  box-shadow: 0 0 8px #00e676;
+}
+
 .pricing-features {
   text-align: left;
   margin-bottom: 2.5rem;
@@ -843,6 +868,7 @@ img { display: block; max-width: 100%; border-radius: inherit; }
 @media (max-width: 640px) {
   .hero-h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
   .hero-sub { font-size: 1rem; }
+  .hero-logo { max-width: 160px; margin-bottom: 1.5rem; }
   .stats-grid { grid-template-columns: 1fr; gap: 1px; }
   .stat-item { padding: 2rem 1.5rem; }
   .ethos-box { padding: 2.5rem 1.5rem; }
@@ -866,6 +892,9 @@ img { display: block; max-width: 100%; border-radius: inherit; }
     <div class="noise"></div>
   </div>
   <div class="hero-content">
+    <!-- HERO LOGO -->
+    <img src="real_world.webp" alt="RealWorld Logo" class="hero-logo">
+    
     <h1 class="hero-h1">
       Du ahnst bereits, dass die<br>Spielregeln <span>manipuliert</span> sind.
     </h1>
@@ -985,7 +1014,8 @@ img { display: block; max-width: 100%; border-radius: inherit; }
 <section class="pricing" id="pricing">
   <div class="container">
     <div style="text-align: center;">
-      <div class="section-eyebrow" data-reveal><div class="dot"></div><span>Dein Zugang</span></div>
+      <!-- Hier wurde die neue Klasse eyebrow-pricing hinzugefügt -->
+      <div class="section-eyebrow eyebrow-pricing" data-reveal><div class="dot"></div><span>Dein Zugang</span></div>
       <h2 class="section-title" data-reveal data-delay="1" style="text-align: center;">Der Weg in die RealWorld<br><em>beginnt hier.</em></h2>
     </div>
 
