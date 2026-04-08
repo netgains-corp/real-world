@@ -1273,5 +1273,42 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<style>
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+</style>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. DOM-Umgebung prüfen
+  const rbContainer = document.querySelector("#scroll-container");
+  const rbContent = document.querySelector("#scroll-content");
+  
+  // 2. Standard-Optionen definieren
+  const lenisOptions = {
+    duration: 1.2,
+    smoothWheel: true,
+    smoothTouch: false
+  };
+  
+  // 3. Fallback: Wenn Rubber Banding Wrapper existiert, binde Lenis daran
+  if (rbContainer && rbContent) {
+    lenisOptions.wrapper = rbContainer;
+    lenisOptions.content = rbContent;
+  }
+  
+  // 4. Initialisieren & Loop starten
+  const lenis = new Lenis(lenisOptions);
+  
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+});
+</script>
+
 </body>
 </html>
